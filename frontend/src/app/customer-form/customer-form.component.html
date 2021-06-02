@@ -1,17 +1,38 @@
 <form #fm="ngForm" (ngSubmit)="onSubmit(fm)">
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" required ngModel>
+        <input type="text" class="form-control" id="name" name="name" ngModel required minlength="4" #name="ngModel">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+            <div *ngIf="name.errors?.required">
+                Name is required.
+            </div>
+            <div *ngIf="name.errors?.minlength">
+                Name must be at least 4 characters long.
+            </div>
+        </div>
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" required ngModel>
+        <input type="email" class="form-control" id="email" name="email" required ngModel #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+            <div *ngIf="email.errors?.required">
+                Email is required.
+            </div>
+            <div *ngIf="email.errors?.pattern">
+                Please enter a valid email address
+            </div>
+        </div>
     </div>
     <div class="form-group">
         <label for="subscription">Subscription</label>
-        <select class="form-group" name="subscription" id="subscription" required ngModel>
+        <select class="form-group" name="subscription" id="subscription" required ngModel #subscription="ngModel">
             <option *ngFor="let opt of sub_options" [value]="opt">{{opt}}</option>
         </select>
+        <div *ngIf="subscription.invalid && subscription.touched" class="alert alert-danger">
+            <div *ngIf="subscription.errors?.required">
+                Please select a subscription plan
+            </div>
+        </div>
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success" [disabled]="!fm.form.valid">Submit</button>
 </form>

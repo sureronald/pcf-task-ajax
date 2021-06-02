@@ -12,7 +12,7 @@ import { CustomerService } from '../customer.service';
 })
 export class CustomerFormComponent implements OnInit {
   @Output() newCustomerEvent = new EventEmitter<Customer>();
-  sub_options = ['free', 'plus', 'pro'];
+  sub_options = ['free', 'plus', 'pro']; // using static options for now but this is better fetched from db
 
   constructor(
     private customerService: CustomerService
