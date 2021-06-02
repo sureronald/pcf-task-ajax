@@ -1,0 +1,17 @@
+<form #fm="ngForm" (ngSubmit)="onSubmit(fm)">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required ngModel>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required ngModel>
+    </div>
+    <div class="form-group">
+        <label for="subscription">Subscription</label>
+        <select class="form-group" name="subscription" id="subscription" required ngModel>
+            <option *ngFor="let opt of sub_options" [value]="opt">{{opt}}</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>

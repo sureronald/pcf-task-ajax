@@ -1,0 +1,23 @@
+<div class="container">
+<div class="col-md-8">
+    <table class="table">
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Subscription</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of customers">
+            <td>{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.subscription}}</td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+<div class="col-md-4">
+<h5>Add a new customer</h5>
+<app-customer-form (newCustomerEvent)="addCustomerEv($event)"></app-customer-form>
+</div>
