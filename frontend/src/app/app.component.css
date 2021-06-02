@@ -24,4 +24,10 @@
     flex: 1;
   }
 
-  
+  .title {
+    background-color: darkblue;
+    color: #fff;
+    margin-top: 0;
+    padding: 20px 10px;
+    text-align: center;
+  }
